@@ -1,0 +1,251 @@
+:root {
+	--ff-space-mono: 'Space Mono', monospace;
+
+	--soft-red: hsl(10, 46%, 67%);
+	--strong-cyan: hsl(172, 67%, 45%);
+	--very-dark-cyan: hsl(183, 100%, 15%);
+	--dark-grayish-cyan: hsl(186, 14%, 43%);
+	--grayish-cyan: hsl(184, 14%, 56%);
+	--light-grayish-cyan: hsl(185, 41%, 84%);
+	--very-light-grayish-cyan: hsl(189, 41%, 97%);
+	--white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}
+
+h1 {
+	font-size: 3.2rem;
+	line-height: 1.1;
+}
+
+p {
+	margin: 0;
+}
+
+.btn {
+	font-family: inherit;
+	font-size: 1.5rem;
+	cursor: pointer;
+	background-color: var(--very-dark-cyan);
+	color: var(--white);
+	border: none;
+	border-radius: 0.25rem;
+	padding: 0.5rem 2rem;
+}
+
+.btn:hover,
+.btn:focus {
+	background-color: hsl(172deg 67% 75%);
+	color: var(--very-dark-cyan);
+	outline: none;
+}
+
+.btn--selected {
+	background-color: var(--strong-cyan);
+	color: var(--very-dark-cyan);
+}
+
+.btn--selected:hover,
+.btn--selected:focus {
+	background-color: var(--strong-cyan);
+	color: var(--very-dark-cyan);
+}
+
+.btn--reset {
+	background-color: var(--strong-cyan);
+	color: var(--very-dark-cyan);
+	text-transform: uppercase;
+	width: 100%;
+	opacity: 0.3;
+	pointer-events: none;
+	padding: 0.782rem 2rem;
+}
+
+.btn--reset--active {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+label {
+	color: var(--very-dark-cyan);
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+input {
+	font: inherit;
+	font-size: 1.5rem;
+	background-color: var(--very-light-grayish-cyan);
+	color: var(--very-dark-cyan);
+	text-align: right;
+	width: 100%;
+	border: 3px solid var(--very-light-grayish-cyan);
+	border-radius: 0.25rem;
+	padding: 0.594rem;
+}
+
+input:hover,
+input:focus {
+	outline: none;
+	border-color: var(--strong-cyan);
+}
+
+input::placeholder {
+	color: var(--light-grayish-cyan);
+}
+
+.app {
+	font-family: var(--ff-space-mono);
+	font-weight: 700;
+	background-color: var(--light-grayish-cyan);
+	color: var(--white);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 2rem;
+	min-width: 320px;
+	min-height: 100vh;
+	padding-top: 2rem;
+}
+
+.splitter {
+	background-color: var(--white);
+	border-top-left-radius: 1rem;
+	border-top-right-radius: 1rem;
+	padding: 1.5rem;
+}
+
+.splitter__people-number-label {
+	display: flex;
+	justify-content: space-between;
+}
+
+.splitter__people-number-invalid {
+	color: var(--soft-red);
+	display: none;
+}
+
+.splitter__people-number-invalid--active {
+	display: inline;
+}
+
+.splitter__input,
+.splitter__percentage {
+	margin-bottom: 2rem;
+}
+
+.splitter__input {
+	position: relative;
+}
+
+.splitter__input::before {
+	position: absolute;
+	top: 50%;
+	left: 1rem;
+	transform: translateY(-50%);
+}
+
+.splitter__input--bill::before {
+	content: url('./assets/icon-dollar.svg');
+}
+
+.splitter__input--people-number::before {
+	content: url('./assets/icon-person.svg');
+}
+
+.splitter__people-number-invalid-message {
+	color: var(--soft-red);
+	display: none;
+}
+
+.splitter__people-number-invalid-message--active {
+	display: inline;
+}
+
+.splitter__input--invalid {
+	border-color: var(--soft-red);
+}
+
+.splitter__input--invalid:hover,
+.splitter__input--invalid:focus {
+	outline: none;
+	border-color: var(--soft-red);
+}
+
+.splitter__percentage {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-auto-rows: 1fr;
+	gap: 1rem;
+}
+
+.splitter__percentage-input {
+	text-align: center;
+}
+
+.splitter__percentage-input::placeholder {
+	color: var(--very-dark-cyan);
+}
+
+.splitter__display {
+	background-color: var(--very-dark-cyan);
+	border-radius: 1rem;
+	padding: 1.5rem;
+}
+
+.splitter__display-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+
+.splitter__display-value {
+	font-size: 2.5rem;
+	color: var(--strong-cyan);
+}
+
+.splitter__display-sub-heading {
+	color: var(--grayish-cyan);
+}
+
+@media (min-width: 60em) {
+	.app {
+		justify-content: center;
+		gap: 5rem;
+	}
+
+	.splitter {
+		display: flex;
+		gap: 3rem;
+		max-width: 68.75rem;
+		border-radius: 1rem;
+		box-shadow: 0 15px 25px hsl(0deg 0% 0% / 20%);
+	}
+
+	.splitter__info,
+	.splitter__display {
+		flex: 1;
+	}
+
+	.splitter__display {
+		padding: 2rem;
+	}
+
+	.splitter__percentage {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.btn--reset {
+		margin-top: 9rem;
+	}
+}
